@@ -9,7 +9,7 @@ import (
 	"strings"
 )
 
-func llm(asrToLLMChan chan string, dataStreamChan chan string) {
+func llm(asrToLLMChan chan string, llmToTTSChan chan string) {
 	for {
 		select {
 		case text, ok := <-asrToLLMChan:
@@ -17,13 +17,13 @@ func llm(asrToLLMChan chan string, dataStreamChan chan string) {
 				return
 			}
 			println("llm: ", text)
-			requestLLM(text, dataStreamChan)
+			requestLLM(text, llmToTTSChan)
 		}
 
 	}
 }
 
-func requestLLM(query string, dataStreamChan chan string) {
+func requestLLM(query string, llmToTTSChan chan string) {
 	// 定义请求体（使用 map 构建）
 	body := map[string]interface{}{
 		"model": "ernie-3.5-8k",
@@ -103,7 +103,7 @@ func requestLLM(query string, dataStreamChan chan string) {
 					if delta, ok := choice["delta"].(map[string]interface{}); ok {
 						if content, ok := delta["content"].(string); ok {
 							fmt.Println("Extracted content:", content)
-							dataStreamChan <- content
+							llmToTTSChan <- content
 						}
 					}
 				}
