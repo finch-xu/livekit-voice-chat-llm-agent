@@ -99,15 +99,12 @@ func (h *TTSAPIHandler) sendText() error {
 	for {
 		select {
 		case text := <-h.inCh:
+			// 构造tts消息
 			body := map[string]interface{}{
-				"session_id": "381665d8-31f6-11ef-894a-52540037edd7",
-				"message_id": "3b46df26-31f6-11ef-894a-52540037edd7",
-				"action":     "ACTION_SYNTHESIS",
-				"data":       text,
+				"action": "ACTION_SYNTHESIS",
+				"data":   text,
 			}
-
 			bytes, _ := json.Marshal(body)
-
 			err := h.conn.WriteMessage(websocket.TextMessage, bytes)
 			if err != nil {
 				return err

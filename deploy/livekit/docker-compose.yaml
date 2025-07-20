@@ -1,0 +1,33 @@
+services:
+  livekit:
+    image: livekit/livekit-server:v1.9.0
+    command: --config /etc/livekit.yaml
+    restart: unless-stopped
+    ports:
+      - "7880:7880"  # LiveKit HTTP/WebSocket port
+      - "4500-4600:4500-4600/udp"  # WebRTC RTP UDP ports
+    volumes:
+      - ./livekit.yaml:/etc/livekit.yaml
+    environment:
+      - TZ=Asia/Shanghai
+    ulimits:
+      nproc: 65535   # 高性能实时服务器需要配置Linux系统参数
+      nofile:
+        soft: 65535
+        hard: 70000
+    depends_on:
+      - redis
+    networks:
+      - livekit-network
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    command: redis-server /etc/redis.conf
+    restart: unless-stopped
+    volumes:
+      - ./redis.conf:/etc/redis.conf
+    networks:
+      - livekit-network
+networks:
+  livekit-network:
+    driver: bridge

@@ -1,0 +1,22 @@
+port: 7880
+rtc:
+  tcp_port: 7881
+  port_range_start: 4500
+  port_range_end: 4600
+  use_external_ip: false
+  node_ip: 192.168.124.98   # 服务器的ip地址
+  enable_loopback_candidate: false
+redis:
+  address: redis:6379
+  username: ""
+  password: ""
+  db: 0
+  use_tls: false
+  sentinel_master_name: ""
+  sentinel_username: ""
+  sentinel_password: ""
+  sentinel_addresses: [ ]
+  cluster_addresses: [ ]
+  max_redirects: null
+keys:
+  API4Lpvvg2Hfynv: BekllZvfAd7SsiGVNU0OQT45Ahe2tod8TwV90By5WlyB
