@@ -9,6 +9,7 @@ import (
 
 func NewAccessToken(roomName, pID string) (string, error) {
 
+	// 这东西泄露也没啥事，每次部署生成都不一样
 	apiKey := "API4Lpvvg2Hfynv"                                 // 填写你刚才代码生成的apiKey
 	apiSecret := "BekllZvfAd7SsiGVNU0OQT45Ahe2tod8TwV90By5WlyB" // 填写你刚才代码生成的apiSecret
 

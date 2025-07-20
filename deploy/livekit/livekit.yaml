@@ -19,4 +19,4 @@ redis:
   cluster_addresses: [ ]
   max_redirects: null
 keys:
-  API4Lpvvg2Hfynv: BekllZvfAd7SsiGVNU0OQT45Ahe2tod8TwV90By5WlyB
+  API4Lpvvg2Hfynv: BekllZvfAd7SsiGVNU0OQT45Ahe2tod8TwV90By5WlyB # 这东西泄露也没啥事，每次部署生成都不一样
