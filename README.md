@@ -6,7 +6,7 @@ webrtc livekit voice chat llm Agent, include ASR TTS LLM
 
 ASR、TTS对接腾讯语音接口，llm使用的openai兼容格式，百度千帆大模型的免费接口。
 
-整体流程的文档写到了 https://pipi.pidan.dev/20250719/webrtc-connect-livekit-use-go-sdk/
+整体流程的文档写到了 https://pidan.dev/20250719/webrtc-connect-livekit-use-go-sdk/
 
 非常感谢livekit官方的努力，让一切变得这么简单。        
 本项目基于 https://github.com/livekit/server-sdk-go/tree/main/examples/openai_realtime_voice 修改并扩展开发。
